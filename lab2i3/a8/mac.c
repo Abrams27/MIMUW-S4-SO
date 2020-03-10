@@ -30,19 +30,29 @@ typedef struct {
 
 // a + x * y
 uint128_t mac(uint128_t const *a, uint128_t const *x, uint128_t const *y) {
+  uint128_t res_mnozenia;
+  res_mnozenia.lo = 0;
+  res_mnozenia.hi = 0;
+
   uint128_t result;
 
   result.lo = a->lo;
   result.hi = a->hi;
 
-  uint128_t lo_razy_lo;
-  lo_razy_lo.lo = 0;
-  lo_razy_lo.hi = 0;
+  mul128(res_mnozenia.lo, res_mnozenia.hi, x->lo, y->lo);
+  add128(result.lo, result.hi, res_mnozenia.lo, res_mnozenia.hi);
 
-  mul128(lo_razy_lo.lo, lo_razy_lo.hi, x->lo, y->lo);
-  add128(result.lo, result.hi, lo_razy_lo.lo, lo_razy_lo.hi);
+  res_mnozenia.lo = 0;
+  res_mnozenia.hi = 0;
+  mul128(res_mnozenia.lo, res_mnozenia.hi, x->hi, y->lo);
 
+  result.hi += res_mnozenia.lo;
 
+  res_mnozenia.lo = 0;
+  res_mnozenia.hi = 0;
+  mul128(res_mnozenia.lo, res_mnozenia.hi, x->lo, y->hi);
+
+   result.hi += res_mnozenia.lo;
 
   return result;
 }
