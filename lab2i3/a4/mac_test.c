@@ -62,7 +62,6 @@ int main() {
       print_128("a             = ", test_tbl[i].a);
       print_128("x             = ", test_tbl[i].x);
       print_128("y             = ", test_tbl[i].y);
-      //print_128("x * y         = ", test_tbl[i].x.lo * test_tbl[i].y.lo + test_tbl[i].x.lo * test_tbl[i].y.hi + test_tbl[i].x.hi * test_tbl[i].y.lo + test_tbl[i].x.hi * test_tbl[i].y.hi);
       print_128("mac should be = ", test_tbl[i].w);
       print_128("mac is        = ", w);
     }
