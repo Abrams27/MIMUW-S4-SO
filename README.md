@@ -20,3 +20,8 @@ Assignments for SO class (Operating Systems class)
     
     gcc mac.c -o mac
     ./mac
+
+## lab 4
+    
+    make
+    ./inc_thread_test_naive 3 10000000
