@@ -8,6 +8,7 @@ inc_thread:
   mov     ecx, [rdi + 8]  ; count
   jmp     count_test
 count_loop:
+  lock \
   inc     dword [rsi]     ; ++*value
 count_test:
   sub     ecx, 1          ; --count
